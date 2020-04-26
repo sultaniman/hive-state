@@ -4,14 +4,24 @@ defmodule Hive.VehicleSupervisor do
 
   @mod __MODULE__
 
-  def start_link(arg),
-    do: DynamicSupervisor.start_link(@mod, arg, name: @mod)
-
-  def init(_arg) do
-    DynamicSupervisor.init(strategy: :one_for_one)
+  # Client
+  def start_link(arg) do
+    DynamicSupervisor.start_link(@mod, arg, name: @mod)
   end
 
   def infleet(%Vehicle{} = vehicle) do
     DynamicSupervisor.start_child(@mod, {VehicleWorker, vehicle})
+  end
+
+  def defleet(%Vehicle{} = vehicle) do
+    DynamicSupervisor.start_child(@mod, {VehicleWorker, vehicle})
+  end
+
+  # Server
+  def init(_arg) do
+    DynamicSupervisor.init(strategy: :one_for_one)
+  end
+
+  defp proc_name(vehicle_id) do
   end
 end
