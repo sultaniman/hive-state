@@ -17,10 +17,10 @@ defmodule Hive.VehicleSupervisor do
   end
 
   def defleet(%Vehicle{} = vehicle) do
-    proc_name = VehicleWorker.proc_name(vehicle)
+    proc_name = VehicleWorker.make_name(vehicle)
     case Registry.lookup(@registry, proc_name) do
       [{pid, _}] ->
-        Logger.info("Stopping process name=#{proc_name} with pid=#{pid}")
+        Logger.info("Stopping process name=#{proc_name} with pid=#{inspect(pid)}")
         GenServer.stop(pid)
         {:ok, pid}
       _ ->

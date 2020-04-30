@@ -42,7 +42,11 @@ defmodule Hive.VehicleWorker do
     {:reply, vehicle.lastKnownPosition, vehicle}
   end
 
-  def proc_name(%Vehicle{id: id}) do
-    {:via, Registry, {VehicleRegistry, "v-#{id}"}}
+  def make_name(%Vehicle{id: id}) do
+    "v-#{id}"
+  end
+
+  def proc_name(%Vehicle{} = vehicle) do
+    {:via, Registry, {VehicleRegistry, make_name(vehicle)}}
   end
 end
