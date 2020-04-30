@@ -21,7 +21,4 @@ defmodule Hive.VehicleSupervisor do
   def init(_arg) do
     DynamicSupervisor.init(strategy: :one_for_one)
   end
-
-  defp proc_name(vehicle_id) do
-  end
 end

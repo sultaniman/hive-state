@@ -1,17 +1,15 @@
 defmodule Hive.Application do
   @moduledoc false
-
   use Application
 
+  @opts [strategy: :one_for_one, name: Hive.Supervisor]
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: Hive.Worker.start_link(arg)
-      # {Hive.Worker, arg}
+      {Hive.VehicleSupervisor, []},
       {Registry, keys: :unique, name: VehicleRegistry}
       # {Registry, keys: :unique, name: TelemetryRegistry}
     ]
 
-    opts = [strategy: :one_for_one, name: Hive.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link(children, @opts)
   end
 end
