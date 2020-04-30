@@ -1,14 +1,17 @@
 defmodule Hive.MixProject do
   use Mix.Project
 
+  @vsn "0.1.0"
   @deps [
+    {:h3, "~> 3.6"},
+    {:cachex, "~> 3.2"},
     {:credo, "~> 1.4", only: [:dev, :test], runtime: false}
   ]
 
   def project do
     [
       app: :hive,
-      version: "0.1.0",
+      version: @vsn,
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       deps: @deps
@@ -17,7 +20,7 @@ defmodule Hive.MixProject do
 
   def application do
     [
-      extra_applications: [:logger],
+      extra_applications: [:logger, :cachex],
       mod: {Hive.Application, []}
     ]
   end

@@ -1,0 +1,11 @@
+%{
+  "bunt": {:hex, :bunt, "0.2.0", "951c6e801e8b1d2cbe58ebbd3e616a869061ddadcc4863d0a2182541acae9a38", [:mix], [], "hexpm", "7af5c7e09fe1d40f76c8e4f9dd2be7cebd83909f31fee7cd0e9eadc567da8353"},
+  "cachex": {:hex, :cachex, "3.2.0", "a596476c781b0646e6cb5cd9751af2e2974c3e0d5498a8cab71807618b74fe2f", [:mix], [{:eternal, "~> 1.2", [hex: :eternal, repo: "hexpm", optional: false]}, {:jumper, "~> 1.0", [hex: :jumper, repo: "hexpm", optional: false]}, {:sleeplocks, "~> 1.1", [hex: :sleeplocks, repo: "hexpm", optional: false]}, {:unsafe, "~> 1.0", [hex: :unsafe, repo: "hexpm", optional: false]}], "hexpm", "aef93694067a43697ae0531727e097754a9e992a1e7946296f5969d6dd9ac986"},
+  "credo": {:hex, :credo, "1.4.0", "92339d4cbadd1e88b5ee43d427b639b68a11071b6f73854e33638e30a0ea11f5", [:mix], [{:bunt, "~> 0.2.0", [hex: :bunt, repo: "hexpm", optional: false]}, {:jason, "~> 1.0", [hex: :jason, repo: "hexpm", optional: false]}], "hexpm", "1fd3b70dce216574ce3c18bdf510b57e7c4c85c2ec9cad4bff854abaf7e58658"},
+  "eternal": {:hex, :eternal, "1.2.1", "d5b6b2499ba876c57be2581b5b999ee9bdf861c647401066d3eeed111d096bc4", [:mix], [], "hexpm", "b14f1dc204321429479c569cfbe8fb287541184ed040956c8862cb7a677b8406"},
+  "h3": {:hex, :h3, "3.6.3", "e4a3d815ccc2a2488fd80ec3d89b28acfe0aa75efa71f78f5d6e58eb27258b51", [:rebar3], [], "hexpm", "944e9e27e6e77436a64a4ee9733bb645c566400cf868e8ca383a30b271365c6a"},
+  "jason": {:hex, :jason, "1.2.0", "10043418c42d2493d0ee212d3fddd25d7ffe484380afad769a0a38795938e448", [:mix], [{:decimal, "~> 1.0", [hex: :decimal, repo: "hexpm", optional: true]}], "hexpm", "116747dbe057794c3a3e4e143b7c8390b29f634e16c78a7f59ba75bfa6852e7f"},
+  "jumper": {:hex, :jumper, "1.0.1", "3c00542ef1a83532b72269fab9f0f0c82bf23a35e27d278bfd9ed0865cecabff", [:mix], [], "hexpm", "318c59078ac220e966d27af3646026db9b5a5e6703cb2aa3e26bcfaba65b7433"},
+  "sleeplocks": {:hex, :sleeplocks, "1.1.1", "3d462a0639a6ef36cc75d6038b7393ae537ab394641beb59830a1b8271faeed3", [:rebar3], [], "hexpm", "84ee37aeff4d0d92b290fff986d6a95ac5eedf9b383fadfd1d88e9b84a1c02e1"},
+  "unsafe": {:hex, :unsafe, "1.0.1", "a27e1874f72ee49312e0a9ec2e0b27924214a05e3ddac90e91727bc76f8613d8", [:mix], [], "hexpm", "6c7729a2d214806450d29766abc2afaa7a2cbecf415be64f36a6691afebb50e5"},
+}

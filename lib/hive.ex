@@ -1,18 +1,21 @@
 defmodule Hive do
-  @moduledoc """
-  Documentation for `Hive`.
-  """
+  @moduledoc false
+  alias Hive.{
+    GeoPosition,
+    Vehicle,
+    VehicleSupervisor,
+    VehicleWorker
+  }
 
-  @doc """
-  Hello world.
+  def infleet(%Vehicle{} = vehicle) do
+    VehicleSupervisor.infleet(vehicle)
+  end
 
-  ## Examples
+  def defleet(%Vehicle{} = vehicle) do
+    VehicleSupervisor.defleet(vehicle)
+  end
 
-      iex> Hive.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def update_position(%Vehicle{} = vehicle, %GeoPosition{} = position) do
+    VehicleWorker.update(:position, vehicle, position)
   end
 end
