@@ -18,4 +18,8 @@ defmodule Hive do
   def update_position(%Vehicle{} = vehicle, %GeoPosition{} = position) do
     VehicleWorker.update(:position, vehicle, position)
   end
+
+  def h3_index(%Vehicle{} = vehicle, resolution) do
+    VehicleWorker.h3(:index, vehicle, resolution)
+  end
 end

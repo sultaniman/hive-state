@@ -13,6 +13,15 @@ defmodule Hive.VehicleWorker do
     GenServer.cast(proc_name(vehicle), {:update_position, position})
   end
 
+  def get_position(%Vehicle{} = vehicle) do
+    GenServer.call(proc_name(vehicle), :position)
+  end
+
+  def h3(:index, %Vehicle{} = vehicle, resolution) do
+    position = get_position(vehicle)
+    :h3.from_geo({position.latitude, position.longitude}, resolution)
+  end
+
   # Server
   @impl true
   def init(%Vehicle{} = vehicle) do
@@ -22,6 +31,11 @@ defmodule Hive.VehicleWorker do
   @impl true
   def handle_cast({:update_position, %GeoPosition{} = position}, %Vehicle{} = vehicle) do
     {:noreply, %{vehicle | lastKnownPosition: position}}
+  end
+
+  @impl true
+  def handle_call(:position, _from, %Vehicle{} = vehicle) do
+    {:reply, vehicle.lastKnownPosition, vehicle}
   end
 
   defp proc_name(%Vehicle{id: id}) do
