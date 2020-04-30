@@ -1,8 +1,11 @@
 defmodule Hive.VehicleSupervisor do
   use DynamicSupervisor
+  require Logger
+
   alias Hive.{Vehicle, VehicleWorker}
 
   @mod __MODULE__
+  @registry VehicleRegistry
 
   # Client
   def start_link(arg) do
@@ -14,7 +17,16 @@ defmodule Hive.VehicleSupervisor do
   end
 
   def defleet(%Vehicle{} = vehicle) do
-    DynamicSupervisor.start_child(@mod, {VehicleWorker, vehicle})
+    proc_name = VehicleWorker.proc_name(vehicle)
+    case Registry.lookup(@registry, proc_name) do
+      [{pid, _}] ->
+        Logger.info("Stopping process name=#{proc_name} with pid=#{pid}")
+        GenServer.stop(pid)
+        {:ok, pid}
+      _ ->
+        Logger.info("Process not found name=#{proc_name}")
+        {:error, :not_found}
+    end
   end
 
   # Server
