@@ -24,7 +24,7 @@ defmodule Hive.TelemetryStore do
 
   defp slice(telemetry_list) do
     if length(telemetry_list) > @max_telemetry_count do
-      Enum.slice(telemetry_list, 0..99)
+      Enum.slice(telemetry_list, 0..(@max_telemetry_count-1))
     else
       telemetry_list
     end
