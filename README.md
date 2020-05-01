@@ -2,6 +2,8 @@
 
 ## TODO
 
-* Tests,
-* Telemetry store,
-* Custom telemetry ttl,
+* [ ] Tests,
+* [ ] Telemetry store,
+* [ ] Custom telemetry ttl,
+* [ ] Refactor & cleanup,
+* [ ] Documentation
