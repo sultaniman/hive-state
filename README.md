@@ -3,7 +3,7 @@
 ## TODO
 
 * [ ] Tests,
-* [ ] Telemetry store,
-* [ ] Custom telemetry ttl,
+* [x] Telemetry store,
+* [x] Custom telemetry limit,
 * [ ] Refactor & cleanup,
 * [ ] Documentation
