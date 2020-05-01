@@ -3,6 +3,7 @@ defmodule Hive.VehicleWorker do
   alias Hive.{GeoPosition, Vehicle}
 
   @mod __MODULE__
+  @registry Hive.VehicleRegistry
 
   # Client
   def start_link(%Vehicle{} = vehicle) do
@@ -47,6 +48,6 @@ defmodule Hive.VehicleWorker do
   end
 
   def proc_name(%Vehicle{} = vehicle) do
-    {:via, Registry, {VehicleRegistry, make_name(vehicle)}}
+    {:via, Registry, {@registry, make_name(vehicle)}}
   end
 end

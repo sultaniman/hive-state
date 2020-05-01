@@ -5,7 +5,7 @@ defmodule Hive.VehicleSupervisor do
   alias Hive.{Vehicle, VehicleWorker}
 
   @mod __MODULE__
-  @registry VehicleRegistry
+  @registry Hive.VehicleRegistry
 
   # Client
   def start_link(arg) do

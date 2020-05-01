@@ -8,9 +8,9 @@ defmodule Hive.Application do
 
     children = [
       {Hive.VehicleSupervisor, []},
-      {Registry, keys: :unique, name: VehicleRegistry},
-      worker(Cachex, [:hive_cache, []])
-      # {Registry, keys: :unique, name: TelemetryRegistry}
+      {Registry, keys: :unique, name: Hive.VehicleRegistry},
+      {Hive.TelemetryStore, []},
+      worker(Cachex, [:hive_cache, []]),
     ]
 
     Supervisor.start_link(children, @opts)
