@@ -2,7 +2,6 @@ defmodule Hive.Application do
   @moduledoc false
   use Application
 
-  @opts [strategy: :one_for_one, name: Hive.Supervisor]
   def start(_type, _args) do
     import Supervisor.Spec
 
@@ -13,6 +12,7 @@ defmodule Hive.Application do
       worker(Cachex, [:hive_cache, []])
     ]
 
-    Supervisor.start_link(children, @opts)
+    opts = [strategy: :one_for_one, name: Hive.Supervisor]
+    Supervisor.start_link(children, opts)
   end
 end
