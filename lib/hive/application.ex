@@ -10,7 +10,7 @@ defmodule Hive.Application do
       {Hive.VehicleSupervisor, []},
       {Registry, keys: :unique, name: Hive.VehicleRegistry},
       {Hive.TelemetryStore, []},
-      worker(Cachex, [:hive_cache, []]),
+      worker(Cachex, [:hive_cache, []])
     ]
 
     Supervisor.start_link(children, @opts)

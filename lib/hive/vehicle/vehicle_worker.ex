@@ -1,4 +1,5 @@
 defmodule Hive.VehicleWorker do
+  @moduledoc false
   use GenServer, restart: :transient
   alias Hive.{GeoPosition, Vehicle}
 

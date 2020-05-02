@@ -1,4 +1,5 @@
 defmodule Hive.Vehicle do
+  @moduledoc false
   alias Hive.GeoPosition
   alias __MODULE__
 

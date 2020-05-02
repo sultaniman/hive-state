@@ -1,4 +1,5 @@
 defmodule Hive.GeoPosition do
+  @moduledoc false
   alias __MODULE__
 
   # Taken from https://developer.mozilla.org/en-US/docs/Web/API/GeolocationCoordinates

@@ -24,7 +24,6 @@ defmodule Hive do
     VehicleSupervisor.infleet(vehicle)
   end
 
-
   @doc """
   Defleet `Vehicle` only by it's id if there is no process
   then `{:error, :not_found}` returned.
