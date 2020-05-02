@@ -12,10 +12,35 @@ defmodule Hive.VehicleSupervisor do
     DynamicSupervisor.start_link(@mod, arg, name: @mod)
   end
 
+  @doc """
+  Infleet `Vehicle` only by it's id.
+  Will return `{:error, {:already_started, pid}}`.
+  """
+  def infleet(vehicle_id) when is_binary(vehicle_id) do
+    infleet(%Vehicle{id: vehicle_id})
+  end
+
+  @doc """
+  Infleet `%Vehicle{}` and supervise in case if we need to
+  keep more information about `%Vehicle{}`.
+  Will return `{:error, {:already_started, pid}}`.
+  """
   def infleet(%Vehicle{} = vehicle) do
     DynamicSupervisor.start_child(@mod, {VehicleWorker, vehicle})
   end
 
+  @doc """
+  Defleet `Vehicle` only by it's id if there is no process
+  then `{:error, :not_found}` returned.
+  """
+  def defleet(vehicle_id) when is_binary(vehicle_id) do
+    defleet(%Vehicle{id: vehicle_id})
+  end
+
+  @doc """
+  Defleet vehicle, will stop the process and in case
+  if there is no process then `{:error, :not_found}` returned.
+  """
   def defleet(%Vehicle{} = vehicle) do
     proc_name = VehicleWorker.make_name(vehicle)
     case Registry.lookup(@registry, proc_name) do
