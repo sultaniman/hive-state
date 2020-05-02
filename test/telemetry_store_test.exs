@@ -44,8 +44,22 @@ defmodule HiveTelemetryTest do
 
       telemetry = TelemetryStore.get(vehicle)
       assert length(telemetry) == 100
+
       [last | _rest] = telemetry
       assert last[:currentSpeed] == 200
+    end
+
+    test "new telemetry added to front" do
+      vehicle = %Vehicle{id: "vehicle-1"}
+      TelemetryStore.add(vehicle, %{one: 1})
+      TelemetryStore.add(vehicle, %{two: 2})
+      TelemetryStore.add(vehicle, %{three: 3})
+
+      assert TelemetryStore.get(vehicle) == [
+        %{three: 3},
+        %{two: 2},
+        %{one: 1}
+      ]
     end
   end
 end
