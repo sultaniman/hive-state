@@ -1,6 +1,7 @@
 defmodule Hive do
   @moduledoc false
   use Hive.Base
+  import Hive.Vehicle.Helpers
 
   @doc """
   Infleet `Vehicle` only by it's id.
@@ -26,7 +27,7 @@ defmodule Hive do
   """
   def has_member?(vehicle_id) do
     %Vehicle{id: vehicle_id}
-    |> VehicleWorker.make_name()
+    |> make_name()
     |> VehicleSupervisor.member?()
   end
 

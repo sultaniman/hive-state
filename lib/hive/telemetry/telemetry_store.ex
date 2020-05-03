@@ -1,10 +1,7 @@
 defmodule Hive.TelemetryStore do
   @moduledoc false
   use Agent, restart: :temporary
-  alias Hive.Vehicle
-
-  @mod __MODULE__
-  @max_telemetry_count 100
+  use Hive.Base
 
   def start_link(_) do
     Agent.start_link(fn -> %{} end, name: @mod)
