@@ -4,7 +4,6 @@ defmodule Hive.MixProject do
   @vsn "0.1.0"
   @deps [
     {:h3, "~> 3.6"},
-    {:cachex, "~> 3.2"},
     {:credo, "~> 1.4", only: [:dev, :test], runtime: false}
   ]
 
@@ -20,7 +19,7 @@ defmodule Hive.MixProject do
 
   def application do
     [
-      extra_applications: [:logger, :cachex],
+      extra_applications: [:logger],
       mod: {Hive.Application, []}
     ]
   end
