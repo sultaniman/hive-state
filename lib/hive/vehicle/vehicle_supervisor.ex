@@ -34,10 +34,19 @@ defmodule Hive.VehicleSupervisor do
         Logger.info("Stopping process name=#{proc_name} with pid=#{inspect(pid)}")
         GenServer.stop(pid)
         {:ok, pid}
-
       _ ->
         Logger.info("Process not found name=#{proc_name}")
         {:error, :not_found}
+    end
+  end
+
+  @doc """
+  Check if `VehicleWorker` is running.
+  """
+  def exists?(proc_name) do
+    case Registry.lookup(@registry, proc_name) do
+      [{_pid, _}] -> true
+      _ -> false
     end
   end
 

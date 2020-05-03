@@ -44,6 +44,12 @@ defmodule Hive do
     VehicleWorker.update(:position, vehicle, position)
   end
 
+  def vehicle_exists?(%Vehicle{} = vehicle) do
+    vehicle
+    |> VehicleWorker.make_name()
+    |> VehicleSupervisor.exists?()
+  end
+
   def h3_index(%Vehicle{} = vehicle, resolution) do
     VehicleWorker.h3(:index, vehicle, resolution)
   end
