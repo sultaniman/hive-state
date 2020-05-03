@@ -3,10 +3,8 @@ defmodule Hive.VehicleSupervisor do
   use DynamicSupervisor
   require Logger
 
-  alias Hive.{Vehicle, VehicleWorker}
-
-  @mod __MODULE__
-  @registry Hive.VehicleRegistry
+  use Hive.Base
+  import Hive.Vehicle.Helpers
 
   # Client
   def start_link(arg) do
@@ -27,7 +25,7 @@ defmodule Hive.VehicleSupervisor do
   if there is no process then `{:error, :not_found}` returned.
   """
   def defleet(%Vehicle{} = vehicle) do
-    proc_name = VehicleWorker.make_name(vehicle)
+    proc_name = make_name(vehicle)
 
     case Registry.lookup(@registry, proc_name) do
       [{pid, _}] ->
@@ -43,11 +41,18 @@ defmodule Hive.VehicleSupervisor do
   @doc """
   Check if `VehicleWorker` is running.
   """
-  def exists?(proc_name) do
+  def member?(proc_name) do
     case Registry.lookup(@registry, proc_name) do
       [{_pid, _}] -> true
       _ -> false
     end
+  end
+
+  @doc """
+  Get state of a given vehicle
+  """
+  def get_vehicle(vehicle_id) do
+    VehicleWorker.get_vehicle(vehicle_id)
   end
 
   # Server

@@ -1,10 +1,8 @@
 defmodule Hive.VehicleWorker do
   @moduledoc false
   use GenServer, restart: :transient
-  alias Hive.{GeoPosition, Vehicle}
-
-  @mod __MODULE__
-  @registry Hive.VehicleRegistry
+  use Hive.Base
+  import Hive.Vehicle.Helpers
 
   # Client
   def start_link(%Vehicle{} = vehicle) do
@@ -18,9 +16,15 @@ defmodule Hive.VehicleWorker do
   end
 
   def get_position(%Vehicle{} = vehicle) do
-    vehicle
+    vehicle.id
     |> proc_name()
     |> GenServer.call(:position)
+  end
+
+  def get_vehicle(vehicle_id) do
+    vehicle_id
+    |> proc_name()
+    |> GenServer.call(:get)
   end
 
   def h3(:index, %Vehicle{} = vehicle, resolution) do
@@ -44,11 +48,8 @@ defmodule Hive.VehicleWorker do
     {:reply, vehicle.lastKnownPosition, vehicle}
   end
 
-  def make_name(%Vehicle{id: id}) do
-    "v-#{id}"
-  end
-
-  def proc_name(%Vehicle{} = vehicle) do
-    {:via, Registry, {@registry, make_name(vehicle)}}
+  @impl true
+  def handle_call(:get, _from, %Vehicle{} = vehicle) do
+    {:reply, vehicle, vehicle}
   end
 end
