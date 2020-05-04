@@ -8,5 +8,5 @@
   * [ ] Test vehicle supervisor
 * [x] Telemetry store,
 * [x] Custom telemetry limit,
-* [ ] Refactor & cleanup,
+* [x] Refactor & cleanup,
 * [ ] Documentation
