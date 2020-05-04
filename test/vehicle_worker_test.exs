@@ -25,5 +25,13 @@ defmodule Hive.VehicleWorkerTest do
       {:ok, _pid} = VehicleWorker.start_link(vehicle)
       assert vehicle = VehicleWorker.get_vehicle(vehicle.id)
     end
+
+    test "can get h3 index for vehicle" do
+      vehicle = %Vehicle{id: "123"}
+      position = %GeoPosition{latitude: 1.1, longitude: 1.2}
+      {:ok, _pid} = VehicleWorker.start_link(vehicle)
+      VehicleWorker.update(:position, vehicle, position)
+      assert 614552350213799935 == VehicleWorker.h3(:index, vehicle, 8)
+    end
   end
 end
