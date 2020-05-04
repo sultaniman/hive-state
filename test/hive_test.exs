@@ -1,4 +1,4 @@
-defmodule HiveTest do
+defmodule Hive.Test do
   use ExUnit.Case
 
   describe "hive :: 🌈 " do

@@ -1,4 +1,4 @@
-defmodule HiveTelemetryTest do
+defmodule Hive.TelemetryStoreTest do
   use ExUnit.Case
   alias Hive.{TelemetryStore, Vehicle}
 

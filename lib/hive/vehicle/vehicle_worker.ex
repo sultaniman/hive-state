@@ -16,13 +16,13 @@ defmodule Hive.VehicleWorker do
   end
 
   def get_position(%Vehicle{} = vehicle) do
-    vehicle.id
+    vehicle
     |> proc_name()
     |> GenServer.call(:position)
   end
 
   def get_vehicle(vehicle_id) do
-    vehicle_id
+    %Vehicle{id: vehicle_id}
     |> proc_name()
     |> GenServer.call(:get)
   end
