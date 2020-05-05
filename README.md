@@ -2,14 +2,15 @@
 
 ## TODO
 
-* [ ] Tests,
+* [x] Tests,
   * [x] Start testing w/ telemetry store,
   * [x] Test vehicle worker,
   * [x] Test vehicle supervisor,
-  * [ ] Test public API
+  * [x] Test public API
 * [x] Telemetry store,
 * [x] Custom telemetry limit,
 * [x] Refactor & cleanup,
+* [ ] Use ETS to store vehicle telemetry,
 * [ ] Documentation
   * [ ] Main module documentation Hive moduledoc,
   * [ ] Function documentation,
