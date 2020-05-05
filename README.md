@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/hive-fleet/hive-state.svg?branch=master)](https://travis-ci.com/hive-fleet/hive-state)
+[![Build Status](https://travis-ci.com/hive-fleet/hive-state.svg?branch=develop)](https://travis-ci.com/hive-fleet/hive-state)
 [![Coverage Status](https://coveralls.io/repos/github/hive-fleet/hive-state/badge.svg?branch=develop&v=1)](https://coveralls.io/github/hive-fleet/hive-state?branch=master)
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 [![Hex.pm](https://img.shields.io/hexpm/l/hive?color=ff69b4&label=License)](https://opensource.org/licenses/Apache-2.0)
