@@ -23,6 +23,9 @@ def deps do
 end
 ```
 
+Add `:hive` to `extra_applications` if necessary.
+
+
 ## Usage 🚀
 Once you have it running you can infleet, defleet, update positions, get h3 index for vehicles
 
