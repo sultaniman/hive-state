@@ -1,4 +1,5 @@
 defmodule Hive.Base do
+  @moduledoc false
   defmacro __using__(_) do
     quote do
       @mod __MODULE__

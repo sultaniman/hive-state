@@ -1,4 +1,5 @@
 defmodule Hive.Vehicle.Helpers do
+  @moduledoc false
   use Hive.Base
 
   def make_name(%Vehicle{id: id}), do: "v-#{id}"

@@ -1,4 +1,5 @@
 defmodule Hive.Test do
+  @moduledoc false
   use ExUnit.Case
   use Hive.Base
 
@@ -48,7 +49,7 @@ defmodule Hive.Test do
       Hive.infleet(vehicle)
       Hive.update_position(vehicle.id, %GeoPosition{latitude: 1.1, longitude: 1.2})
       assert Hive.has_member?("1234")
-      assert 614552350213799935 == Hive.h3_index("1234", 8)
+      assert 614_552_350_213_799_935 == Hive.h3_index("1234", 8)
     end
   end
 end

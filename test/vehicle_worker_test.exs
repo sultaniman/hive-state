@@ -1,4 +1,5 @@
 defmodule Hive.VehicleWorkerTest do
+  @moduledoc false
   use ExUnit.Case
   alias Hive.{
     GeoPosition,
@@ -31,7 +32,7 @@ defmodule Hive.VehicleWorkerTest do
       position = %GeoPosition{latitude: 1.1, longitude: 1.2}
       {:ok, _pid} = VehicleWorker.start_link(vehicle)
       VehicleWorker.update(:position, vehicle, position)
-      assert 614552350213799935 == VehicleWorker.h3(:index, vehicle, 8)
+      assert 614_552_350_213_799_935 == VehicleWorker.h3(:index, vehicle, 8)
     end
   end
 end
