@@ -4,22 +4,60 @@ defmodule Hive do
   import Hive.Vehicle.Helpers
 
   @doc """
-  Infleet `Vehicle` only by it's id.
+  Infleet by `vehicle_id`.
   Will return `{:error, {:already_started, pid}}`.
   """
-  defdelegate infleet(vehicle_id), to: VehicleSupervisor
+  def infleet(vehicle_id) when is_binary(vehicle_id) do
+    VehicleSupervisor.infleet(%Vehicle{id: vehicle_id})
+  end
 
   @doc """
-  Defleet `Vehicle` only by it's id if there is no process
+  Infleet `Vehicle`
+  Will return `{:error, {:already_started, pid}}`.
+  """
+  def infleet(%Vehicle{} = vehicle) do
+    VehicleSupervisor.infleet(vehicle)
+  end
+
+  @doc """
+  Defleet by `vehicle_id`
   then `{:error, :not_found}` returned.
   """
-  defdelegate defleet(vehicle_id), to: VehicleSupervisor
+  def defleet(vehicle_id) when is_binary(vehicle_id) do
+    VehicleSupervisor.defleet(%Vehicle{id: vehicle_id})
+  end
+
+  @doc """
+  Defleet `Vehicle` if not known
+  then `{:error, :not_found}` returned.
+  """
+  def defleet(%Vehicle{} = vehicle) do
+    VehicleSupervisor.defleet(vehicle)
+  end
 
   @doc """
   Update position by `vehicle_id`
   """
   def update_position(vehicle_id, %GeoPosition{} = position) do
     VehicleWorker.update(:position, %Vehicle{id: vehicle_id}, position)
+  end
+
+  @doc """
+  Get position by `vehicle_id`
+  """
+  def get_position(vehicle_id) do
+    %Vehicle{id: vehicle_id}
+    |> proc_name()
+    |> GenServer.call(:position)
+  end
+
+  @doc """
+  Get vehicle by `vehicle_id`
+  """
+  def get_vehicle(vehicle_id) do
+    %Vehicle{id: vehicle_id}
+    |> proc_name()
+    |> GenServer.call(:get)
   end
 
   @doc """

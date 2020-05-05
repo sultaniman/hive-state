@@ -1,9 +1,54 @@
 defmodule Hive.Test do
   use ExUnit.Case
+  use Hive.Base
 
   describe "hive :: 🌈 " do
     test "can infleet vehicles" do
-      assert true
+      vehicle = %Vehicle{id: "api-vehicle"}
+      assert {:ok, _pid} = Hive.infleet(vehicle)
+      assert {:ok, _pid} = Hive.infleet("456")
+    end
+
+    test "can defleet vehicles" do
+      vehicle = %Vehicle{id: "x-vehicle"}
+      assert {:ok, _pid} = Hive.infleet(vehicle)
+      assert {:ok, _pid} = Hive.infleet("567")
+      assert {:ok, _pid} = Hive.defleet(vehicle)
+      assert {:ok, _pid} = Hive.defleet("567")
+    end
+
+    test "defleeting unknown vehicle returns error" do
+      assert {:error, :not_found} = Hive.defleet(%Vehicle{id: "toto"})
+      assert {:error, :not_found} = Hive.defleet("678")
+    end
+
+    test "can update position" do
+      vehicle = %Vehicle{id: "789"}
+      position = %GeoPosition{latitude: 1.1, longitude: 1.2}
+      assert {:ok, _pid} = Hive.infleet(vehicle)
+      Hive.update_position("789", position)
+      assert position = Hive.get_position("789")
+    end
+
+    test "can get vehicle" do
+      vehicle = %Vehicle{id: "890"}
+      assert {:ok, _pid} = Hive.infleet(vehicle)
+      assert vehicle = Hive.get_vehicle("890")
+    end
+
+    test "can check vehicle" do
+      vehicle = %Vehicle{id: "901"}
+      assert {:ok, _pid} = Hive.infleet(vehicle)
+      assert Hive.has_member?("901")
+      refute Hive.has_member?("012")
+    end
+
+    test "can get h3 index for vehicle" do
+      vehicle = %Vehicle{id: "1234"}
+      Hive.infleet(vehicle)
+      Hive.update_position(vehicle.id, %GeoPosition{latitude: 1.1, longitude: 1.2})
+      assert Hive.has_member?("1234")
+      assert 614552350213799935 == Hive.h3_index("1234", 8)
     end
   end
 end
