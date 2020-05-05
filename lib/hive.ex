@@ -1,5 +1,7 @@
 defmodule Hive do
-  @moduledoc false
+  @moduledoc """
+
+  """
   use Hive.Base
   import Hive.Vehicle.Helpers
 
