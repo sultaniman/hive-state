@@ -82,7 +82,8 @@ the first version with clear documentation how setup and use `Hive`.
   * [ ] Document structs
 * [ ] Rest API to handle requests,
 * [ ] User interface to manage and visualize fleet on the map,
-* [ ] Possibility to use different router backends.
+* [ ] Possibility to use different router backends,
+* [ ] Migrate to Horde to support cluster mode https://hex.pm/packages/horde.
 
 
 ## Assets 💄
