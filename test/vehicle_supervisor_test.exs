@@ -40,7 +40,8 @@ defmodule Hive.VehicleSupervisorTest do
     end
 
     test "can not start duplicate process" do
-      vehicle = %Vehicle{id: "get-vehicle"}
+      vehicle = %Vehicle{id: "same-vehicle"}
+      assert {:ok, _pid} = VehicleSupervisor.infleet(vehicle)
       assert {:error, {:already_started, _pid}} = VehicleSupervisor.infleet(vehicle)
     end
   end
