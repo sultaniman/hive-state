@@ -7,7 +7,9 @@
   <h1 align="center">Hive</h1>
 </p>
 
-Keep your fleet state in-memory for fast access and on top of it make calculations using Uber's H3.
+**NOTE**: Very early stage of development
+
+In-memory fleet state management for fast access and on top of it make calculations using Uber's H3.
 
 
 ## Installation 💾
@@ -40,25 +42,50 @@ alias Hive.Vehicle
 
 For more usage details please refer to https://hex.pm/packages/hive
 
-## TODO
+### H3 queries 🍪
 
-* [x] Tests,
+H3 integration is done via https://github.com/helium/erlang-h3 and at the moment the following
+features are supported
+
+```elixir
+Hive.h3_index(vehicle_id, resolution)
+```
+
+## The future 🌈
+
+More features and integrations with H3 will be available in the future
+at the moment the main goal is to stabilize the API and release
+the first version with clear documentation how setup and use `Hive`.
+
+## TODO 🚧
+
+* [x] Tests
   * [x] Start testing w/ telemetry store,
   * [x] Test vehicle worker,
   * [x] Test vehicle supervisor,
   * [x] Test public API
+* [ ] CI
+  * [ ] Travis,
+  * [ ] Coverage,
+  * [ ] Reviews,
+  * [ ] Codeclimate
 * [x] Telemetry store,
 * [x] Custom telemetry limit,
 * [x] Refactor & cleanup,
+* [ ] Fleet counters,
 * [ ] Use ETS to store vehicle telemetry,
+* [ ] Introduce typespecs,
 * [ ] Documentation
   * [ ] Main module documentation Hive moduledoc,
   * [ ] Function documentation,
   * [ ] Usage examples,
   * [ ] Document structs
+* [ ] Rest API to handle requests,
+* [ ] User interface to manage and visualize fleet on the map,
+* [ ] Possibility to use different router backends.
 
 
-## Assets
+## Assets 💄
 
 1. Project logo is from https://www.flaticon.com/free-icon/honeycomb_1598428
 

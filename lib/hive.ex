@@ -1,6 +1,10 @@
 defmodule Hive do
   @moduledoc """
+  Hive allows you to keep the state of your vehicle fleet
+  in-memory and provides fast access as well as calculations
+  on top of Uber's H3 geospatial indexing system.
 
+  Public API exposed under Hive module.
   """
   use Hive.Base
   import Hive.Vehicle.Helpers
