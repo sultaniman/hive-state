@@ -11,6 +11,9 @@
 * [x] Custom telemetry limit,
 * [x] Refactor & cleanup,
 * [ ] Documentation
-
+  * [ ] Main module documentation Hive moduledoc,
+  * [ ] Function documentation,
+  * [ ] Usage examples,
+  * [ ] Document structs
 
 Icons from https://www.flaticon.com/free-icon/honeycomb_1598428
