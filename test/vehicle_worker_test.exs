@@ -1,6 +1,7 @@
 defmodule Hive.VehicleWorkerTest do
   @moduledoc false
   use ExUnit.Case
+
   alias Hive.{
     GeoPosition,
     Vehicle,

@@ -1,5 +1,6 @@
 defmodule Hive.VehicleSupervisorTest do
   use ExUnit.Case
+
   alias Hive.{
     Vehicle,
     VehicleSupervisor

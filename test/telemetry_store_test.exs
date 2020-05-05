@@ -14,6 +14,7 @@ defmodule Hive.TelemetryStoreTest do
     test "it works as expected" do
       vehicle = %Vehicle{id: "vehicle-1"}
       telemetry = %{fuelLevel: 0.8}
+
       TelemetryStore.add(
         vehicle,
         telemetry
@@ -25,6 +26,7 @@ defmodule Hive.TelemetryStoreTest do
     test "truncate works as expected" do
       vehicle = %Vehicle{id: "vehicle-1"}
       telemetry = %{fuelLevel: 0.8}
+
       TelemetryStore.add(
         vehicle,
         telemetry
@@ -56,10 +58,10 @@ defmodule Hive.TelemetryStoreTest do
       TelemetryStore.add(vehicle, %{three: 3})
 
       assert TelemetryStore.get(vehicle) == [
-        %{three: 3},
-        %{two: 2},
-        %{one: 1}
-      ]
+               %{three: 3},
+               %{two: 2},
+               %{one: 1}
+             ]
     end
   end
 end
