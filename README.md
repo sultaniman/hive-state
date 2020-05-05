@@ -11,3 +11,6 @@
 * [x] Custom telemetry limit,
 * [x] Refactor & cleanup,
 * [ ] Documentation
+
+
+Icons from https://www.flaticon.com/free-icon/honeycomb_1598428
