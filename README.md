@@ -64,11 +64,10 @@ the first version with clear documentation how setup and use `Hive`.
   * [x] Test vehicle worker,
   * [x] Test vehicle supervisor,
   * [x] Test public API
-* [ ] CI
-  * [ ] Travis,
-  * [ ] Coverage,
-  * [ ] Reviews,
-  * [ ] Codeclimate
+* [x] CI
+  * [x] Travis,
+  * [x] Coverage,
+  * [x] Reviews
 * [x] Telemetry store,
 * [x] Custom telemetry limit,
 * [x] Refactor & cleanup,
