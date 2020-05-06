@@ -43,7 +43,7 @@ alias Hive.Vehicle
 {:ok, _pid} = Hive.defleet(%Vehicle{id: "normal-vehicle-id"})
 ```
 
-Supervision tree looks like 
+Supervision tree looks like
 ![observer::Supervision tree](https://raw.githubusercontent.com/hive-fleet/hive-state/develop/assets/supervision-tree.png)
 
 For more usage details please refer to https://hex.pm/packages/hive
@@ -69,6 +69,7 @@ the first version with clear documentation how setup and use `Hive`.
   * [x] Start testing w/ telemetry store,
   * [x] Test vehicle worker,
   * [x] Test vehicle supervisor,
+  * [x] Simple load tests,
   * [x] Test public API
 * [x] CI
   * [x] Travis,
@@ -81,9 +82,9 @@ the first version with clear documentation how setup and use `Hive`.
 * [ ] Use ETS to store vehicle telemetry,
 * [ ] Introduce typespecs,
 * [ ] Documentation
-  * [ ] Main module documentation Hive moduledoc,
-  * [ ] Function documentation,
-  * [ ] Usage examples,
+  * [x] Main module documentation Hive moduledoc,
+  * [x] Function documentation,
+  * [x] Usage examples,
   * [ ] Document structs
 * [ ] Rest API to handle requests,
 * [ ] User interface to manage and visualize fleet on the map,

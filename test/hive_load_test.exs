@@ -3,7 +3,7 @@ defmodule Hive.LoadTest do
   use ExUnit.Case
   use Hive.Base
 
-  describe "hive load :: 🌈 " do
+  describe "hive load :: 🚀 " do
     test "infleet 100 vehicles" do
       Enum.map(1..100, &Hive.infleet("id-100-#{&1}"))
 
