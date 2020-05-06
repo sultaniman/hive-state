@@ -5,6 +5,9 @@
 
 <p align="center">
   <h1 align="center">Hive</h1>
+  <p align="center">
+    <img width="150" height="150" src="https://raw.githubusercontent.com/hive-fleet/hive-state/develop/assets/logo.svg"/>
+  </p>
 </p>
 
 **NOTE**: Very early stage of development
