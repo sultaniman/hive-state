@@ -43,6 +43,9 @@ alias Hive.Vehicle
 {:ok, _pid} = Hive.defleet(%Vehicle{id: "normal-vehicle-id"})
 ```
 
+Supervision tree looks like 
+![observer::Supervision tree](https://raw.githubusercontent.com/hive-fleet/hive-state/develop/assets/supervision-tree.png)
+
 For more usage details please refer to https://hex.pm/packages/hive
 
 ### H3 queries 🍪
