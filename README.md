@@ -46,6 +46,38 @@ alias Hive.Vehicle
 {:ok, _pid} = Hive.defleet(%Vehicle{id: "normal-vehicle-id"})
 ```
 
+### Structs
+
+Hive has two structs `Vehicle` and `GeoPosition`
+
+```elixir
+%GeoPosition{
+  latitude: float(),
+  longitude: float(),
+  accuracy: float(),
+  altitude: float(),
+  altitudeAccuracy: float(),
+  heading: float(),
+  speed: float()
+}
+
+%Vehicle{
+  id: String.t(),
+  vin: String.t() | nil,
+  name: String.t() | nil,
+  licensePlate: String.t() | nil,
+  make: String.t() | nil,
+  model: String.t() | nil,
+  seatCount: String.t() | nil,
+  color: String.t() | nil,
+  available: boolean | true,
+  hasPassengers: boolean() | false,
+  hasSDCCapability: boolean() | false,
+  lastKnownPosition: GeoPosition.t() | nil,
+  telemetry: list() | []
+}
+```
+
 Supervision tree looks like
 ![observer::Supervision tree](https://raw.githubusercontent.com/hive-fleet/hive-state/develop/assets/supervision-tree.png)
 
@@ -57,7 +89,8 @@ H3 integration is done via https://github.com/helium/erlang-h3 and at the moment
 features are supported
 
 ```elixir
-Hive.h3_index(vehicle_id, resolution)
+Hive.H3.index("vehicle-uuid")
+Hive.H3.index(%GeoPosition{latitude: 48.8566, longitude: 2.3522})
 ```
 
 ## The future 🌈

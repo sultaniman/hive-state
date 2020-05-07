@@ -40,16 +40,8 @@ defmodule Hive.Test do
     test "can check vehicle" do
       vehicle = %Vehicle{id: "901"}
       assert {:ok, _pid} = Hive.infleet(vehicle)
-      assert Hive.has_member?("901")
-      refute Hive.has_member?("012")
-    end
-
-    test "can get h3 index for vehicle" do
-      vehicle = %Vehicle{id: "1234"}
-      Hive.infleet(vehicle)
-      Hive.update_position(vehicle.id, %GeoPosition{latitude: 1.1, longitude: 1.2})
-      assert Hive.has_member?("1234")
-      assert 614_552_350_213_799_935 == Hive.h3_index("1234", 8)
+      assert Hive.alive?("901")
+      refute Hive.alive?("012")
     end
   end
 end

@@ -9,7 +9,7 @@ defmodule Hive.LoadTest do
 
       count =
         1..100
-        |> Enum.filter(&Hive.has_member?("id-100-#{&1}"))
+        |> Enum.filter(&Hive.alive?("id-100-#{&1}"))
         |> length()
 
       assert count == 100
@@ -20,7 +20,7 @@ defmodule Hive.LoadTest do
 
       count =
         1..1_000
-        |> Enum.filter(&Hive.has_member?("id-1000-#{&1}"))
+        |> Enum.filter(&Hive.alive?("id-1000-#{&1}"))
         |> length()
 
       assert count == 1_000
@@ -31,7 +31,7 @@ defmodule Hive.LoadTest do
 
       count =
         1..10_000
-        |> Enum.filter(&Hive.has_member?("id-1000-#{&1}"))
+        |> Enum.filter(&Hive.alive?("id-1000-#{&1}"))
         |> length()
 
       assert count == 10_000

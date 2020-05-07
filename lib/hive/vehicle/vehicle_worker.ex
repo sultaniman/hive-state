@@ -27,11 +27,6 @@ defmodule Hive.VehicleWorker do
     |> GenServer.call(:get)
   end
 
-  def h3(:index, %Vehicle{} = vehicle, resolution) do
-    position = get_position(vehicle)
-    :h3.from_geo({position.latitude, position.longitude}, resolution)
-  end
-
   # Server
   @impl true
   def init(%Vehicle{} = vehicle) do

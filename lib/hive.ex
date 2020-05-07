@@ -10,7 +10,11 @@ defmodule Hive do
   import Hive.Vehicle.Helpers
 
   @doc """
-  Infleet by `vehicle_id`.
+  Infleet by `vehicle_id`, when vehicle infleeted
+  only by `vehicle_id` then the state of `VehicleWorker`
+  initialized as `%Vehicle{id: vehicle_id}`.
+  If you want to pass more metadata consider passing
+  `%Vehicle{}` struct instead of binary.
   Will return `{:error, {:already_started, pid}}`.
   """
   def infleet(vehicle_id) when is_binary(vehicle_id) do
@@ -69,13 +73,9 @@ defmodule Hive do
   @doc """
   Check if vehicle is known and supervised
   """
-  def has_member?(vehicle_id) do
+  def alive?(vehicle_id) do
     %Vehicle{id: vehicle_id}
     |> make_name()
-    |> VehicleSupervisor.member?()
-  end
-
-  def h3_index(vehicle_id, resolution) do
-    VehicleWorker.h3(:index, %Vehicle{id: vehicle_id}, resolution)
+    |> VehicleSupervisor.alive?()
   end
 end

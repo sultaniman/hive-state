@@ -42,7 +42,7 @@ defmodule Hive.VehicleSupervisor do
   @doc """
   Check if `VehicleWorker` is running.
   """
-  def member?(proc_name) do
+  def alive?(proc_name) do
     case Registry.lookup(@registry, proc_name) do
       [{_pid, _}] -> true
       _ -> false

@@ -26,11 +26,11 @@ defmodule Hive.VehicleSupervisorTest do
       assert {:error, :not_found} = VehicleSupervisor.defleet(vehicle)
     end
 
-    test "can check fleet membership" do
+    test "can check fleet has vehicle" do
       vehicle = %Vehicle{id: "check-vehicle"}
       proc_name = Helpers.make_name(vehicle)
       assert {:ok, _pid} = VehicleSupervisor.infleet(vehicle)
-      assert VehicleSupervisor.member?(proc_name)
+      assert VehicleSupervisor.alive?(proc_name)
     end
 
     test "can get vehicle by id" do
