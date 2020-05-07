@@ -41,7 +41,7 @@ defmodule Hive.MixProject do
       source_url: "https://github.com/hive-fleet/hive-state",
       homepage_url: "https://github.com/hive-fleet",
       docs: [
-        main: "Hive",
+        main: "readme",
         extras: ["README.md"]
       ]
     ]
