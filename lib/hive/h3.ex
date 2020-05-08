@@ -31,6 +31,39 @@ defmodule Hive.H3 do
   end
 
   @doc """
+  Convert string representation of H3 index to
+  numeric index value.
+
+  Example:
+
+    iex> Hive.H3.from_string("8928308280fffff")
+  """
+  @spec from_string(binary()) :: h3_index()
+  def from_string(index) do
+    index
+    |> String.to_charlist()
+    |> :h3.from_string()
+  end
+
+  @doc """
+  Convert string representation of H3 index to
+  numeric index value.
+
+  Example:
+
+    iex> Hive.H3.to_string(617_700_169_958_293_503)
+  """
+  @spec to_string(non_neg_integer()) :: binary()
+  def to_string(index) do
+    index
+    |> :h3.to_string()
+    |> List.to_string()
+  end
+
+  def index_to_geo(index) when is_binary(index) do
+
+  end
+  @doc """
   Finds the centroid of the index.
   Returns the `%GeoPosition{}`
   """

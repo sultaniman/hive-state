@@ -17,11 +17,18 @@ defmodule Hive.H3Test do
       assert 613_047_304_015_839_231 == Hive.H3.index(position, 8)
     end
 
+    test "from_string/1 works as expected" do
+      assert Hive.H3.from_string("8928308280fffff") == 617_700_169_958_293_503
+    end
+
+    test "to_string/1 works as expected" do
+      assert Hive.H3.to_string(617_700_169_958_293_503) == "8928308280fffff"
+    end
+
     test "k_ring works as expected" do
       hexagons =
         "8928308280fffff"
-        |> String.to_charlist()
-        |> :h3.from_string()
+        |> Hive.H3.from_string()
         |> Hive.H3.k_ring(1)
         |> Enum.map(&:h3.to_string/1)
         |> Enum.map(&List.to_string/1)
