@@ -30,7 +30,7 @@ defmodule Hive.Vehicle do
           model: String.t() | nil,
           seatCount: String.t() | nil,
           color: String.t() | nil,
-          available: boolean | true,
+          available: boolean() | true,
           hasPassengers: boolean() | false,
           hasSDCCapability: boolean() | false,
           lastKnownPosition: GeoPosition.t() | nil,
