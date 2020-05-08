@@ -89,9 +89,25 @@ H3 integration is done via https://github.com/helium/erlang-h3 and at the moment
 features are supported
 
 ```elixir
+# Get hexagon index for vehicle or GeoPosition
 Hive.H3.index("vehicle-uuid")
 Hive.H3.index(%GeoPosition{latitude: 48.8566, longitude: 2.3522})
+
+# H3 index to GeoPosition
+H3.index_to_geo("8928308280fffff")
+H3.index_to_geo(617_700_169_958_293_503)
+
+# Get geo boundary
+H3.to_geo_boundary("8928308280fffff")
+H3.to_geo_boundary(613_196_840_967_340_031)
+
+# Get kRing
+H3.k_ring("8928308280fffff")
+H3.k_ring(613_196_840_967_340_031, 1)
 ```
+
+For more see `Hive.H3` module documentation.
+
 
 ## The future 🌈
 

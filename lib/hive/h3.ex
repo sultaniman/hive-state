@@ -53,8 +53,8 @@ defmodule Hive.H3 do
 
     iex> Hive.H3.to_string(617_700_169_958_293_503)
   """
-  @spec to_string(non_neg_integer()) :: binary()
-  def to_string(index) do
+  @spec to_hex_string(non_neg_integer()) :: binary()
+  def to_hex_string(index) do
     index
     |> :h3.to_string()
     |> List.to_string()
@@ -138,8 +138,20 @@ defmodule Hive.H3 do
   Get all hexagons in a k-ring around
   a given center and a distance.
   """
+  @spec k_ring(binary(), non_neg_integer()) :: list(h3_index())
+  def k_ring(index, distance) when is_binary(index) do
+    index
+    |> from_string()
+    |> k_ring(distance)
+  end
+
+  @doc """
+  Get all hexagons in a k-ring around
+  a given center and a distance.
+  """
   @spec k_ring(h3_index(), non_neg_integer()) :: list(h3_index())
   def k_ring(index, distance) do
     :h3.k_ring(index, distance)
+    |> Enum.map(&to_hex_string/1)
   end
 end

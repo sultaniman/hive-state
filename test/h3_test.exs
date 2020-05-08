@@ -31,7 +31,7 @@ defmodule Hive.H3Test do
     end
 
     test "to_string/1 works as expected" do
-      assert H3.to_string(617_700_169_958_293_503) == "8928308280fffff"
+      assert H3.to_hex_string(617_700_169_958_293_503) == "8928308280fffff"
     end
 
     test "index_to_geo/1 works as expected" do
@@ -71,7 +71,7 @@ defmodule Hive.H3Test do
 
       with_string_index =
         paris_index
-        |> H3.to_string()
+        |> H3.to_hex_string()
         |> H3.to_geo_boundary()
         |> geo_positions_to_tuples()
 
@@ -84,10 +84,9 @@ defmodule Hive.H3Test do
         "8928308280fffff"
         |> H3.from_string()
         |> H3.k_ring(1)
-        |> Enum.map(&H3.to_string/1)
         |> MapSet.new()
 
-      assert MapSet.new([
+      expected = MapSet.new([
         "8928308280fffff",
         "8928308280bffff",
         "89283082807ffff",
@@ -95,7 +94,10 @@ defmodule Hive.H3Test do
         "89283082803ffff",
         "89283082873ffff",
         "8928308283bffff"
-      ]) == hexagons
+      ])
+
+      assert expected == hexagons
+      assert expected == H3.k_ring("8928308280fffff", 1) |> MapSet.new()
     end
 
     test "get_resolution/1 works as expected" do
