@@ -25,6 +25,16 @@ defmodule Hive.H3Test do
       assert Hive.H3.to_string(617_700_169_958_293_503) == "8928308280fffff"
     end
 
+    test "index_to_geo/1 works as expected" do
+      position = %GeoPosition{
+        latitude: 37.77670234943567,
+        longitude: -122.41845932318311
+      }
+
+      assert position = Hive.H3.index_to_geo("8928308280fffff")
+      assert position = Hive.H3.index_to_geo(617_700_169_958_293_503)
+    end
+
     test "k_ring works as expected" do
       hexagons =
         "8928308280fffff"

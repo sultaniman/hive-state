@@ -60,12 +60,20 @@ defmodule Hive.H3 do
     |> List.to_string()
   end
 
-  def index_to_geo(index) when is_binary(index) do
-
-  end
   @doc """
-  Finds the centroid of the index.
-  Returns the `%GeoPosition{}`
+  Returns the `%GeoPosition{}` center of the cell
+  from string representation
+  """
+  @spec index_to_geo(binary()) :: GeoPosition.t()
+  def index_to_geo(index) when is_binary(index) do
+    index
+    |> from_string()
+    |> index_to_geo()
+  end
+
+  @doc """
+  Returns the `%GeoPosition{}` center of the cell
+  from numeric index
   """
   @spec index_to_geo(h3_index()) :: GeoPosition.t()
   def index_to_geo(index) do
