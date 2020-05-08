@@ -4,6 +4,11 @@ defmodule Hive.H3Test do
   use Hive.Base
   alias Hive.H3
 
+  def geo_positions_to_tuples(positions) do
+    positions
+    |> Enum.map(&{&1.latitude, &1.longitude})
+  end
+
   describe "H3 :: ⚽️ " do
     test "can get h3 index for vehicle" do
       vehicle = %Vehicle{id: "1234"}
@@ -48,15 +53,15 @@ defmodule Hive.H3Test do
     test "to_geo_boundary/1 works as expected" do
       paris_index = 613_047_304_015_839_231
       paris_bounds = [
-        %Hive.GeoPosition{latitude: 48.85884506529458, longitude: 2.3526566175076393},
-        %Hive.GeoPosition{latitude: 48.85769910065315, longitude: 2.3463415968651824},
-        %Hive.GeoPosition{latitude: 48.85319382376231, longitude: 2.345015248718628},
-        %Hive.GeoPosition{latitude: 48.8498348107989, longitude: 2.3500032743113586},
-        %Hive.GeoPosition{latitude: 48.8509808618284, longitude: 2.356317312666095},
-        %Hive.GeoPosition{latitude: 48.85548583942441, longitude: 2.357644307615529}
+        {48.85884506529458, 2.3526566175076393},
+        {48.85769910065315, 2.3463415968651824},
+        {48.85319382376231, 2.345015248718628},
+        {48.8498348107989, 2.3500032743113586},
+        {48.8509808618284, 2.356317312666095},
+        {48.85548583942441, 2.357644307615529}
       ]
-      assert paris_bounds == H3.to_geo_boundary(paris_index)
-      assert paris_bounds == H3.to_geo_boundary(H3.to_string(paris_index))
+      assert paris_bounds == geo_positions_to_tuples(H3.to_geo_boundary(paris_index))
+      assert paris_bounds == geo_positions_to_tuples(H3.to_geo_boundary(H3.to_string(paris_index)))
     end
 
     test "k_ring works as expected" do
