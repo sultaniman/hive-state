@@ -1,8 +1,9 @@
 defmodule Hive do
   @moduledoc """
-  Hive allows you to keep the state of your vehicle fleet
-  in-memory and provides fast access as well as calculations
-  on top of Uber's H3 geospatial indexing system.
+  Efficient in-memory fleet state management
+  where each vehicle is a separate process
+  which manages it's own state and provides
+  APIs to access and use it.
 
   Public API exposed under Hive module.
   """

@@ -10,9 +10,7 @@
   </p>
 </p>
 
-**NOTE**: Very early stage of development
-
-In-memory fleet state management for fast access and on top of it make calculations using Uber's H3.
+Efficient in-memory fleet state management.
 
 
 ## Installation 💾
