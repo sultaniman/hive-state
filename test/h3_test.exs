@@ -6,7 +6,10 @@ defmodule Hive.H3Test do
 
   def geo_positions_to_tuples(positions) do
     positions
-    |> Enum.map(&{&1.latitude, &1.longitude})
+    |> Enum.map(&{
+      Float.round(&1.latitude, 10),
+      Float.round(&1.longitude, 10)
+    })
   end
 
   describe "H3 :: ⚽️ " do
@@ -37,28 +40,28 @@ defmodule Hive.H3Test do
         longitude: -122.41845932318311
       }
 
-      assert position = H3.index_to_geo("8928308280fffff")
-      assert position = H3.index_to_geo(617_700_169_958_293_503)
+      assert position == H3.index_to_geo("8928308280fffff")
+      assert position == H3.index_to_geo(617_700_169_958_293_503)
     end
 
     test "index_from_geo/2 works as expected" do
       paris = %GeoPosition{
-        latitude: 48.8566,
-        longitude: 2.3522
+        latitude: 37.3615593,
+        longitude: -122.0553238
       }
 
-      assert 613_047_304_015_839_231 == H3.index_from_geo(paris, 8)
+      assert 613_196_840_967_340_031 == H3.index_from_geo(paris, 8)
     end
 
     test "to_geo_boundary/1 works as expected" do
-      paris_index = 613_047_304_015_839_231
+      paris_index = 613_196_840_967_340_031
       paris_bounds = MapSet.new([
-        {48.85884506529458, 2.3526566175076393},
-        {48.85769910065315, 2.3463415968651824},
-        {48.85319382376231, 2.345015248718628},
-        {48.8498348107989, 2.3500032743113586},
-        {48.8509808618284, 2.356317312666095},
-        {48.85548583942441, 2.357644307615529}
+        {Float.round(37.35289791086641, 10), Float.round(-122.05623286127619, 10)},
+        {Float.round(37.354077271554004, 10), Float.round(-122.06213998202213, 10)},
+        {Float.round(37.35643717847348, 10), Float.round(-122.05175455716366, 10)},
+        {Float.round(37.35879583478516, 10), Float.round(-122.06356934373095, 10)},
+        {Float.round(37.36115592680977, 10), Float.round(-122.05318357743447, 10)},
+        {Float.round(37.362335222443996, 10), Float.round(-122.05909124330346, 10)}
       ])
 
       with_index =
