@@ -52,16 +52,28 @@ defmodule Hive.H3Test do
 
     test "to_geo_boundary/1 works as expected" do
       paris_index = 613_047_304_015_839_231
-      paris_bounds = [
+      paris_bounds = MapSet.new([
         {48.85884506529458, 2.3526566175076393},
         {48.85769910065315, 2.3463415968651824},
         {48.85319382376231, 2.345015248718628},
         {48.8498348107989, 2.3500032743113586},
         {48.8509808618284, 2.356317312666095},
         {48.85548583942441, 2.357644307615529}
-      ]
-      assert paris_bounds == geo_positions_to_tuples(H3.to_geo_boundary(paris_index))
-      assert paris_bounds == geo_positions_to_tuples(H3.to_geo_boundary(H3.to_string(paris_index)))
+      ])
+
+      with_index =
+        paris_index
+        |> H3.to_geo_boundary()
+        |> geo_positions_to_tuples()
+
+      with_string_index =
+        paris_index
+        |> H3.to_string()
+        |> H3.to_geo_boundary()
+        |> geo_positions_to_tuples()
+
+      assert paris_bounds == MapSet.new(with_index)
+      assert paris_bounds == MapSet.new(with_string_index)
     end
 
     test "k_ring works as expected" do
