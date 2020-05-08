@@ -97,5 +97,23 @@ defmodule Hive.H3Test do
         "8928308283bffff"
       ]) == hexagons
     end
+
+    test "get_resolution/1 works as expected" do
+      resolution =
+        "89080000003ffff"
+        |> H3.from_string()
+        |> H3.get_resolution()
+
+      assert resolution == 9
+    end
+
+    test "pentagon?/1 works as expected" do
+      is_pentagon =
+        "851c0003fffffff"
+        |> H3.from_string()
+        |> H3.pentagon?()
+
+      assert is_pentagon
+    end
   end
 end
