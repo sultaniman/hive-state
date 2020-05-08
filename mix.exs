@@ -1,7 +1,7 @@
 defmodule Hive.MixProject do
   use Mix.Project
 
-  @vsn "0.1.0"
+  @vsn "0.0.1"
 
   @deps [
     {:h3, "~> 3.6"},

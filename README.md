@@ -20,7 +20,7 @@ your `mix.exs`:
 
 ```elixir
 def deps do
-  [{:hive, "~> 0.1.0"}]
+  [{:hive, "~> 0.0.1"}]
 end
 ```
 
