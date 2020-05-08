@@ -101,27 +101,9 @@ the first version with clear documentation how setup and use `Hive`.
 
 ## TODO 🚧
 
-* [x] Tests
-  * [x] Start testing w/ telemetry store,
-  * [x] Test vehicle worker,
-  * [x] Test vehicle supervisor,
-  * [x] Simple load tests,
-  * [x] Test public API
-* [x] CI
-  * [x] Travis,
-  * [x] Coverage,
-  * [x] Reviews
-* [x] Telemetry store,
-* [x] Custom telemetry limit,
-* [x] Refactor & cleanup,
 * [ ] Fleet counters,
 * [ ] Use ETS to store vehicle telemetry,
 * [ ] Introduce typespecs,
-* [ ] Documentation
-  * [x] Main module documentation Hive moduledoc,
-  * [x] Function documentation,
-  * [x] Usage examples,
-  * [ ] Document structs
 * [ ] H3 implement
   * [ ] `num_hexagons/1`,
   * [ ] `edge_length_meters/1`,
