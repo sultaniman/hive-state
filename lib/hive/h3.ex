@@ -86,6 +86,39 @@ defmodule Hive.H3 do
   end
 
   @doc """
+  Returns index from `%GeoPosition{}`
+  """
+  @spec index_from_geo(GeoPosition.t(), resolution()) :: h3_index()
+  def index_from_geo(position, resolution) do
+    :h3.from_geo(
+      {position.latitude, position.longitude},
+      resolution
+    )
+  end
+
+  @doc """
+  Returns bounds for index
+  """
+  @spec to_geo_boundary(binary()) :: list(GeoPosition.t())
+  def to_geo_boundary(index) when is_binary(index) do
+    index
+    |> from_string()
+    |> to_geo_boundary()
+  end
+
+  @doc """
+  Returns bounds for index
+  """
+  @spec to_geo_boundary(h3_index()) :: list(GeoPosition.t())
+  def to_geo_boundary(index) do
+    index
+    |> :h3.to_geo_boundary()
+    |> Enum.map(fn {lat, lon} ->
+      %GeoPosition{latitude: lat, longitude: lon}
+    end)
+  end
+
+  @doc """
   Returns the resolution of the index.
   """
   @spec get_resolution(h3_index()) :: resolution()
