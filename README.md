@@ -44,6 +44,12 @@ alias Hive.Vehicle
 {:ok, _pid} = Hive.defleet(%Vehicle{id: "normal-vehicle-id"})
 ```
 
+In case if you infleet only by `vehicle_id` then `%Vehicle{}` struct
+is created with default field values.
+Other use cases are that you already have all required information thus
+can infleet `%Vehicle{}` with all parameters you want.
+
+
 ### Structs
 
 Hive has two structs `Vehicle` and `GeoPosition`
@@ -81,6 +87,7 @@ Supervision tree looks like
 
 For more usage details please refer to https://hex.pm/packages/hive
 
+
 ### H3 queries 🍪
 
 H3 integration is done via https://github.com/helium/erlang-h3 and at the moment the following
@@ -100,7 +107,7 @@ H3.to_geo_boundary("8928308280fffff")
 H3.to_geo_boundary(613_196_840_967_340_031)
 
 # Get kRing
-H3.k_ring("8928308280fffff")
+H3.k_ring("8928308280fffff", 1)
 H3.k_ring(613_196_840_967_340_031, 1)
 ```
 
@@ -112,34 +119,6 @@ For more see `Hive.H3` module documentation.
 More features and integrations with H3 will be available in the future
 at the moment the main goal is to stabilize the API and release
 the first version with clear documentation how setup and use `Hive`.
-
-## TODO 🚧
-
-* [ ] Vehicle update APIs,
-* [ ] Vehicle + H3 APIs,
-* [ ] Refactor internal APIs,
-* [ ] Fleet counters,
-* [ ] Use ETS to store vehicle telemetry,
-* [ ] Introduce typespecs,
-* [ ] H3 implement
-  * [ ] `num_hexagons/1`,
-  * [ ] `edge_length_meters/1`,
-  * [ ] `edge_length_kilometers/1`,
-  * [ ] `hex_area_m2/1`,
-  * [ ] `hex_area_km2/1`,
-  * [ ] `get_base_cell/1`,
-  * [ ] `is_valid/1`,
-  * [ ] `k_ring_distances/2`,
-  * [ ] `max_k_ring_size/1`,
-  * [ ] `compact/1`,
-  * [ ] `uncompact/2`,
-  * [ ] `indices_are_neighbors/2`,
-  * [ ] `get_unidirectional_edge/2`,
-  * [ ] `grid_distance/2`
-* [ ] Rest API to handle requests,
-* [ ] User interface to manage and visualize fleet on the map,
-* [ ] Possibility to use different router backends,
-* [ ] Migrate to Horde to support cluster mode https://hex.pm/packages/horde.
 
 
 ## Assets 💄
