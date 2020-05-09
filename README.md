@@ -115,6 +115,8 @@ the first version with clear documentation how setup and use `Hive`.
 
 ## TODO 🚧
 
+* [ ] Vehicle update APIs,
+* [ ] Vehicle + H3 APIs,
 * [ ] Fleet counters,
 * [ ] Use ETS to store vehicle telemetry,
 * [ ] Introduce typespecs,
