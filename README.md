@@ -54,7 +54,7 @@ Hive has two structs `Vehicle` and `GeoPosition`
   longitude: float(),
   accuracy: float(),
   altitude: float(),
-  altitudeAccuracy: float(),
+  altitude_accuracy: float(),
   heading: float(),
   speed: float()
 }
@@ -63,15 +63,15 @@ Hive has two structs `Vehicle` and `GeoPosition`
   id: String.t(),
   vin: String.t() | nil,
   name: String.t() | nil,
-  licensePlate: String.t() | nil,
+  license_plate: String.t() | nil,
   make: String.t() | nil,
   model: String.t() | nil,
-  seatCount: String.t() | nil,
+  seat_count: String.t() | nil,
   color: String.t() | nil,
-  available: boolean() | true,
-  hasPassengers: boolean() | false,
-  hasSDCCapability: boolean() | false,
-  lastKnownPosition: GeoPosition.t() | nil,
+  online: boolean() | true,
+  has_passengers: boolean() | false,
+  is_sdc: boolean() | false,
+  position: GeoPosition.t() | nil,
   telemetry: list() | []
 }
 ```

@@ -7,16 +7,16 @@ defmodule Hive.Vehicle do
   defstruct id: "",
             vin: "",
             name: "",
-            licensePlate: "",
+            license_plate: "",
             make: "",
             model: "",
-            seatCount: 2,
+            seat_count: 2,
             color: "",
-            available: true,
-            hasPassengers: false,
-            hasSDCCapability: false,
+            online: true,
+            has_passengers: false,
+            is_sdc: false,
             telemetry: [],
-            lastKnownPosition: %Hive.GeoPosition{
+            position: %Hive.GeoPosition{
               latitude: 0.0,
               longitude: 0.0
             }
@@ -25,15 +25,15 @@ defmodule Hive.Vehicle do
           id: String.t(),
           vin: String.t() | nil,
           name: String.t() | nil,
-          licensePlate: String.t() | nil,
+          license_plate: String.t() | nil,
           make: String.t() | nil,
           model: String.t() | nil,
-          seatCount: String.t() | nil,
+          seat_count: String.t() | nil,
           color: String.t() | nil,
-          available: boolean() | true,
-          hasPassengers: boolean() | false,
-          hasSDCCapability: boolean() | false,
-          lastKnownPosition: GeoPosition.t() | nil,
+          online: boolean() | true,
+          has_passengers: boolean() | false,
+          is_sdc: boolean() | false,
+          position: GeoPosition.t() | nil,
           telemetry: list() | []
         }
 end

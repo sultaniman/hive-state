@@ -35,12 +35,12 @@ defmodule Hive.VehicleWorker do
 
   @impl true
   def handle_cast({:update_position, %GeoPosition{} = position}, %Vehicle{} = vehicle) do
-    {:noreply, %{vehicle | lastKnownPosition: position}}
+    {:noreply, %{vehicle | position: position}}
   end
 
   @impl true
   def handle_call(:position, _from, %Vehicle{} = vehicle) do
-    {:reply, vehicle.lastKnownPosition, vehicle}
+    {:reply, vehicle.position, vehicle}
   end
 
   @impl true
