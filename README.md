@@ -66,7 +66,7 @@ Hive has two structs `Vehicle` and `GeoPosition`
   license_plate: String.t() | nil,
   make: String.t() | nil,
   model: String.t() | nil,
-  seat_count: String.t() | nil,
+  seat_count: non_neg_integer() | nil,
   color: String.t() | nil,
   online: boolean() | true,
   has_passengers: boolean() | false,
