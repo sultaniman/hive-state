@@ -53,7 +53,11 @@ defmodule Hive.VehicleSupervisor do
   Get state of a given vehicle
   """
   def get_vehicle(vehicle_id) do
-    VehicleWorker.get_vehicle(vehicle_id)
+    if alive?(make_name(%Vehicle{id: vehicle_id})) do
+      VehicleWorker.get_vehicle(vehicle_id)
+    else
+      nil
+    end
   end
 
   # Server

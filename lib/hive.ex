@@ -72,6 +72,34 @@ defmodule Hive do
   end
 
   @doc """
+  Sets vehicle online
+  """
+  def set_online(vehicle_id) do
+    VehicleWorker.set_online(%Vehicle{id: vehicle_id})
+  end
+
+  @doc """
+  Sets vehicle offline
+  """
+  def set_offline(vehicle_id) do
+    VehicleWorker.set_offline(%Vehicle{id: vehicle_id})
+  end
+
+  @doc """
+  Change state has_passengers to true
+  """
+  def pickup(vehicle_id) do
+    VehicleWorker.pickup(%Vehicle{id: vehicle_id})
+  end
+
+  @doc """
+  Sets state has_passengers to false
+  """
+  def dropoff(vehicle_id) do
+    VehicleWorker.dropoff(%Vehicle{id: vehicle_id})
+  end
+
+  @doc """
   Check if vehicle is known and supervised
   """
   def alive?(vehicle_id) do

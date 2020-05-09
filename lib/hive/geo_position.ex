@@ -9,7 +9,7 @@ defmodule Hive.GeoPosition do
             longitude: 0.0,
             accuracy: 0.0,
             altitude: 0.0,
-            altitudeAccuracy: 0.0,
+            altitude_accuracy: 0.0,
             heading: 0.0,
             speed: 0.0
 
@@ -18,7 +18,7 @@ defmodule Hive.GeoPosition do
           longitude: float(),
           accuracy: float(),
           altitude: float(),
-          altitudeAccuracy: float(),
+          altitude_accuracy: float(),
           heading: float(),
           speed: float()
         }

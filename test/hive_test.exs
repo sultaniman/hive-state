@@ -43,5 +43,37 @@ defmodule Hive.Test do
       assert Hive.alive?("901")
       refute Hive.alive?("012")
     end
+
+    test "can set vehicle online" do
+      vehicle = %Vehicle{id: "911"}
+      assert {:ok, _pid} = Hive.infleet(vehicle)
+      Hive.set_online("911")
+      v = Hive.get_vehicle("911")
+      assert v.online
+    end
+
+    test "can set vehicle offline" do
+      vehicle = %Vehicle{id: "912"}
+      assert {:ok, _pid} = Hive.infleet(vehicle)
+      Hive.set_offline("912")
+      v = Hive.get_vehicle("912")
+      refute v.online
+    end
+
+    test "can set pickup state" do
+      vehicle = %Vehicle{id: "967"}
+      assert {:ok, _pid} = Hive.infleet(vehicle)
+      Hive.pickup("967")
+      v = Hive.get_vehicle("967")
+      assert v.has_passengers
+    end
+
+    test "can set dropoff state" do
+      vehicle = %Vehicle{id: "968"}
+      assert {:ok, _pid} = Hive.infleet(vehicle)
+      Hive.dropoff("968")
+      v = Hive.get_vehicle("968")
+      refute v.has_passengers
+    end
   end
 end

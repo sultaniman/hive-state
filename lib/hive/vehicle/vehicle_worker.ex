@@ -15,16 +15,16 @@ defmodule Hive.VehicleWorker do
     |> GenServer.cast({:update_position, position})
   end
 
-  def update(:online, %Vehicle{} = vehicle) do
+  def set_online(%Vehicle{} = vehicle) do
     vehicle
     |> proc_name()
-    |> GenServer.cast({:online})
+    |> GenServer.cast({:set_online, true})
   end
 
-  def update(:offline, %Vehicle{} = vehicle) do
+  def set_offline(%Vehicle{} = vehicle) do
     vehicle
     |> proc_name()
-    |> GenServer.cast({:offline})
+    |> GenServer.cast({:set_online, false})
   end
 
   def get_position(%Vehicle{} = vehicle) do
@@ -39,6 +39,18 @@ defmodule Hive.VehicleWorker do
     |> GenServer.call(:get)
   end
 
+  def pickup(%Vehicle{} = vehicle) do
+    vehicle
+    |> proc_name()
+    |> GenServer.cast(:pickup)
+  end
+
+  def dropoff(%Vehicle{} = vehicle) do
+    vehicle
+    |> proc_name()
+    |> GenServer.cast(:dropoff)
+  end
+
   # Server
   @impl true
   def init(%Vehicle{} = vehicle) do
@@ -51,13 +63,18 @@ defmodule Hive.VehicleWorker do
   end
 
   @impl true
-  def handle_cast({:online}, %Vehicle{} = vehicle) do
-    {:noreply, %{vehicle | online: true}}
+  def handle_cast({:set_online, state}, %Vehicle{} = vehicle) do
+    {:noreply, %{vehicle | online: state}}
   end
 
   @impl true
-  def handle_cast({:offline}, %Vehicle{} = vehicle) do
-    {:noreply, %{vehicle | online: false}}
+  def handle_cast(:pickup, %Vehicle{} = vehicle) do
+    {:noreply, %{vehicle | has_passengers: true}}
+  end
+
+  @impl true
+  def handle_cast(:dropoff, %Vehicle{} = vehicle) do
+    {:noreply, %{vehicle | has_passengers: false}}
   end
 
   @impl true
