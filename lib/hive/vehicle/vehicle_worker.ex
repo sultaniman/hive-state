@@ -15,6 +15,18 @@ defmodule Hive.VehicleWorker do
     |> GenServer.cast({:update_position, position})
   end
 
+  def update(:online, %Vehicle{} = vehicle) do
+    vehicle
+    |> proc_name()
+    |> GenServer.cast({:online})
+  end
+
+  def update(:offline, %Vehicle{} = vehicle) do
+    vehicle
+    |> proc_name()
+    |> GenServer.cast({:offline})
+  end
+
   def get_position(%Vehicle{} = vehicle) do
     vehicle
     |> proc_name()
@@ -36,6 +48,16 @@ defmodule Hive.VehicleWorker do
   @impl true
   def handle_cast({:update_position, %GeoPosition{} = position}, %Vehicle{} = vehicle) do
     {:noreply, %{vehicle | position: position}}
+  end
+
+  @impl true
+  def handle_cast({:online}, %Vehicle{} = vehicle) do
+    {:noreply, %{vehicle | online: true}}
+  end
+
+  @impl true
+  def handle_cast({:offline}, %Vehicle{} = vehicle) do
+    {:noreply, %{vehicle | online: false}}
   end
 
   @impl true
