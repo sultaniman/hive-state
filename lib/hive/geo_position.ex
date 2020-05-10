@@ -14,7 +14,7 @@ defmodule Hive.GeoPosition do
 
   # Taken from https://developer.mozilla.org/en-US/docs/Web/API/GeolocationCoordinates
   @enforce_keys [:latitude, :longitude]
-
+  @derive Jason.Encoder
   defstruct latitude: 0.0,
             longitude: 0.0,
             accuracy: 0.0,

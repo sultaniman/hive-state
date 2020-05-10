@@ -5,6 +5,7 @@ defmodule Hive.MixProject do
 
   @deps [
     {:h3, "~> 3.6"},
+    {:jason, "~> 1.2"},
     {:ex_doc, "~> 0.21", only: :dev, runtime: false},
     {:excoveralls, "~> 0.12", only: :test},
     {:inch_ex, github: "rrrene/inch_ex", only: [:dev, :test]},

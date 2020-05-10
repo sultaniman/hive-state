@@ -20,6 +20,7 @@ defmodule Hive.Vehicle do
         }
 
   @enforce_keys [:id]
+  @derive Jason.Encoder
   defstruct id: "",
             vin: "",
             name: "",
