@@ -44,10 +44,9 @@ alias Hive.Vehicle
 {:ok, _pid} = Hive.defleet(%Vehicle{id: "normal-vehicle-id"})
 ```
 
-In case if you infleet only by `vehicle_id` then `%Vehicle{}` struct
-is created with default field values.
-Other use cases are that you already have all required information thus
-can infleet `%Vehicle{}` with all parameters you want.
+If we in-fleet only by `vehicle_id` then `%Vehicle{}` struct
+is created with default field values. We also can in-fleet giving
+full `%Vehicle{}` with all parameters you want.
 
 
 ### Structs

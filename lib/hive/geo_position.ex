@@ -2,6 +2,16 @@ defmodule Hive.GeoPosition do
   @moduledoc false
   alias __MODULE__
 
+  @type t() :: %GeoPosition{
+          latitude: float(),
+          longitude: float(),
+          accuracy: float(),
+          altitude: float(),
+          altitude_accuracy: float(),
+          heading: float(),
+          speed: float()
+        }
+
   # Taken from https://developer.mozilla.org/en-US/docs/Web/API/GeolocationCoordinates
   @enforce_keys [:latitude, :longitude]
 
@@ -12,14 +22,4 @@ defmodule Hive.GeoPosition do
             altitude_accuracy: 0.0,
             heading: 0.0,
             speed: 0.0
-
-  @type t() :: %GeoPosition{
-          latitude: float(),
-          longitude: float(),
-          accuracy: float(),
-          altitude: float(),
-          altitude_accuracy: float(),
-          heading: float(),
-          speed: float()
-        }
 end

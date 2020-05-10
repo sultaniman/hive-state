@@ -3,6 +3,22 @@ defmodule Hive.Vehicle do
   alias Hive.GeoPosition
   alias __MODULE__
 
+  @type t() :: %Vehicle{
+          id: String.t(),
+          vin: String.t() | nil,
+          name: String.t() | nil,
+          license_plate: String.t() | nil,
+          make: String.t() | nil,
+          model: String.t() | nil,
+          seat_count: non_neg_integer() | 2,
+          color: String.t() | nil,
+          online: boolean() | true,
+          has_passengers: boolean() | false,
+          is_sdc: boolean() | false,
+          position: GeoPosition.t() | nil,
+          telemetry: list() | []
+        }
+
   @enforce_keys [:id]
   defstruct id: "",
             vin: "",
@@ -20,20 +36,4 @@ defmodule Hive.Vehicle do
               latitude: 0.0,
               longitude: 0.0
             }
-
-  @type t() :: %Vehicle{
-          id: String.t(),
-          vin: String.t() | nil,
-          name: String.t() | nil,
-          license_plate: String.t() | nil,
-          make: String.t() | nil,
-          model: String.t() | nil,
-          seat_count: non_neg_integer() | 2,
-          color: String.t() | nil,
-          online: boolean() | true,
-          has_passengers: boolean() | false,
-          is_sdc: boolean() | false,
-          position: GeoPosition.t() | nil,
-          telemetry: list() | []
-        }
 end
